@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Source Files\stuff">
+      <UniqueIdentifier>{53354947-336e-41b0-809a-666ce326fefd}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\app.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\render.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\expblur.cpp">
+      <Filter>Source Files\stuff</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\init.cpp">
+      <Filter>Source Files\stuff</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\input.cpp">
+      <Filter>Source Files\stuff</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\StdAfx.cpp">
+      <Filter>Source Files\stuff</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\global.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\render.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\app.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\D.h">
+      <Filter>Source Files\stuff</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\expblur.h">
+      <Filter>Source Files\stuff</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\init.h">
+      <Filter>Source Files\stuff</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\input.h">
+      <Filter>Source Files\stuff</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\stuff.h">
+      <Filter>Source Files\stuff</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\StdAfx.h">
+      <Filter>Source Files\stuff</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Resources.h">
+      <Filter>Source Files\stuff</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\global.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

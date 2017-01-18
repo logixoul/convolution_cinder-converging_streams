@@ -1,0 +1,17 @@
+uniform sampler2D tex;
+uniform sampler2D bloomTex;
+uniform vec2 tex_size;
+vec2 tc_ = gl_TexCoord[0].xy;
+
+void main()
+{
+	vec3 c = texture2D(tex, tc_).rgb;
+	vec3 bloom = texture2D(bloomTex, tc_).rgb;
+	
+	float bloomAlpha=exp(#f("bloomAlpha_", "step=.01", 3.0f));
+	float mainAlpha=exp(#f("mainAlpha_", "step=.01", -3.0f));
+	
+	vec3 rgb = mainAlpha * (c*bloom+bloom*bloomAlpha);
+	
+	gl_FragColor = vec4(rgb, 1);
+}

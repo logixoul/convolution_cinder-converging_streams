@@ -1,0 +1,32 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "convolution_cinder", "convolution_cinder.vcxproj", "{74202EDD-91D2-4D2A-B0B6-355CEB16E6BE}"
+	ProjectSection(ProjectDependencies) = postProject
+		{1D514F17-981D-4558-8E1E-245778E9E971} = {1D514F17-981D-4558-8E1E-245778E9E971}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "convcinder_lib", "..\convcinder_lib\convcinder_lib.vcxproj", "{1D514F17-981D-4558-8E1E-245778E9E971}"
+EndProject
+Global
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN - Subversion Support for Visual Studio
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{74202EDD-91D2-4D2A-B0B6-355CEB16E6BE}.Debug|Win32.ActiveCfg = Debug|Win32
+		{74202EDD-91D2-4D2A-B0B6-355CEB16E6BE}.Debug|Win32.Build.0 = Debug|Win32
+		{74202EDD-91D2-4D2A-B0B6-355CEB16E6BE}.Release|Win32.ActiveCfg = Release|Win32
+		{74202EDD-91D2-4D2A-B0B6-355CEB16E6BE}.Release|Win32.Build.0 = Release|Win32
+		{1D514F17-981D-4558-8E1E-245778E9E971}.Debug|Win32.ActiveCfg = Debug|Win32
+		{1D514F17-981D-4558-8E1E-245778E9E971}.Debug|Win32.Build.0 = Debug|Win32
+		{1D514F17-981D-4558-8E1E-245778E9E971}.Release|Win32.ActiveCfg = Release|Win32
+		{1D514F17-981D-4558-8E1E-245778E9E971}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

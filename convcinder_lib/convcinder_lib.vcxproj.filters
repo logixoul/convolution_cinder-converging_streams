@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="colorspaces.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Dragging.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="fastpow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="getOpt.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="gl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="median.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="misc.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="picopng.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="profiling.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="util.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="StdAfx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="shade.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="colorspaces.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Dragging.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="fastpow.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="fastpow2.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="fftwrap.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="getOpt.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="gl.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="median.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="misc.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="picopng.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="profiling.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="sat.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="types.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="util.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="StdAfx.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="shade.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

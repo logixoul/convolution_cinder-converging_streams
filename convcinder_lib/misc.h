@@ -3,9 +3,9 @@
 #include "StdAfx.h"
 #include "util.h"
 
-Vec3f& fetch(Array2D<Vec3f>& src, Vec2i const& pos);
+vec3& fetch(Array2D<vec3>& src, ivec2 const& pos);
 template<class T>
-void aaPoint(Array2D<T>& dest, Vec2f const& pos, T const& c) {
+void aaPoint(Array2D<T>& dest, vec2 const& pos, T const& c) {
 	int x = (int)pos.x;
 	int y = (int)pos.y;
 	float u_ratio = pos.x - x;
@@ -23,26 +23,26 @@ void aaPoint(Array2D<T>& dest, Vec2f const& pos, T const& c) {
 	addr[dest.w] += Uv * c;
 	addr[dest.w + 1] += uv * c;
 }
-extern Matrix33f toHsv;
-extern Matrix33f toHsvInv;
+extern mat3 toHsv;
+extern mat3 toHsvInv;
 
-static const float getSaturation_mul = abs(-Vec3f(1, 1, 1).normalized().x);
+static const float getSaturation_mul = abs(-vec3(1, 1, 1).normalized().x);
 // untested, fast. ok, now tested, seems to work.
 // inline for speed
-inline float getSaturation(Vec3f const& v)
+inline float getSaturation(vec3 const& v)
 {
 	// http://mathworld.wolfram.com/Point-LineDistance3-Dimensional.html
-	//static const Vec3f mul = -Vec3f(1, 1, 1).normalized();
+	//static const vec3 mul = -vec3(1, 1, 1).normalized();
 	//return v.cross(mul).length();
-	return Vec3f(v.y - v.z, v.z - v.x, v.x - v.y).length() * getSaturation_mul;
+	return vec3(v.y - v.z, v.z - v.x, v.x - v.y).length() * getSaturation_mul;
 }
 
-void rotateHue_ip(Vec3f& v, float angle);
+void rotateHue_ip(vec3& v, float angle);
 
 struct HsvStruct
 {
-	Vec2f transform(Vec3f const& v)
+	vec2 transform(vec3 const& v)
 	{
-		return Vec2f(toHsv.m00*v.x + toHsv.m01*v.y + toHsv.m02*v.z, toHsv.m10*v.x + toHsv.m11*v.y + toHsv.m12*v.z);
+		return vec2(toHsv.m00*v.x + toHsv.m01*v.y + toHsv.m02*v.z, toHsv.m10*v.x + toHsv.m11*v.y + toHsv.m12*v.z);
 	}
 };

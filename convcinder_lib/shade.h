@@ -57,14 +57,14 @@ inline gl::Texture gtex(Array2D<float> a)
 	glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, a.w, a.h, GL_LUMINANCE, GL_FLOAT, a.data);
 	return tex;
 }
-/*gl::Texture gtex(Array2D<Vec2f> a)
+/*gl::Texture gtex(Array2D<vec2> a)
 {
 	gl::Texture tex(a.w, a.h, gtexfmt);
 	tex.bind();
 	glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, a.w, a.h, GL_RG, GL_FLOAT, a.data);
 	return tex;
 }*/
-inline gl::Texture gtex(Array2D<Vec3f> a)
+inline gl::Texture gtex(Array2D<vec3> a)
 {
 	gl::Texture tex(a.w, a.h, gtexfmt);
 	tex.bind();

@@ -20,7 +20,7 @@ void complexArrayToImage(FFT::CArray in, Image& out)
 	forxy(in)
 	{
 		FFT::Complex& val = in(p);
-		out(Vec2i(0, out.h-1) - p) = out(p) = (Vec3f&)hsvToRGB(Vec3f(
+		out(ivec2(0, out.h-1) - p) = out(p) = (vec3&)hsvToRGB(vec3(
 			atan2(val.y, val.x)/twoPi+.5, // hue
 			1.0, // sat
 			val.length())); // value

@@ -6,7 +6,7 @@ ci::params::InterfaceGl* GetOpt::params;
 
 void GetOpt::Init()
 {
-	params = new ci::params::InterfaceGl( "App parameters", ci::Vec2i( 200, 400 ) );
+	params = new ci::params::InterfaceGl( "App parameters", ci::ivec2( 200, 400 ) );
 
 	params->hide();
 }
@@ -23,7 +23,7 @@ void GetOpt::render()
 		ci::params::InterfaceGl::draw();
 			
 		static Font font("Arial", 16);
-		ci::gl::drawString(Pfl::getText(), Vec2f(20, 430), ColorA::white(), font); // freezes the app for some reason
+		ci::gl::drawString(Pfl::getText(), vec2(20, 430), ColorA::white(), font); // freezes the app for some reason
 		glPopAttrib();
 	}
 }

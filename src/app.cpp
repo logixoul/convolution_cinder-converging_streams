@@ -16,23 +16,23 @@
 #include "shade.h"
 
 using namespace render;
-Array2D<Vec2f> vel(imageSize,Vec2f::zero());
+Array2D<vec2> vel(imageSize,vec2::zero());
 float fluidVelocity_;
 void fluid()
 {
 	GETFLOAT(fluidVelocity, "step=.01", .01); ::fluidVelocity_=fluidVelocity;
 	GETFLOAT(fluidSteer, "step=.001", 0*.01);
 	GETFLOAT(fluidGravity, "step=.0001", .0);
-	Array2D<Vec3f> result(image.w, image.h, Vec3f::zero());
+	Array2D<vec3> result(image.w, image.h, vec3::zero());
 	auto func = [&](int yStart, int yEnd) { 
-		Vec2i p;
+		ivec2 p;
 		for(p.y = yStart; p.y < yEnd; p.y++) for(p.x = 0; p.x < image.w; p.x++)
 		{
-			Vec3f& c = image(p);
-			Vec3f ab = toHsv.transformVec(c);
+			vec3& c = image(p);
+			vec3 ab = toHsv.transformVec(c);
 			float saturation = ab.xy().length();
 			float brightness = ab.z;
-			Vec2f offset = ab.xy() * (fluidVelocity * (saturation+.5));
+			vec2 offset = ab.xy() * (fluidVelocity * (saturation+.5));
 				
 			ab.rotateZ(saturation*fluidSteer);
 			c=toHsvInv.transformVec(ab);
@@ -41,17 +41,17 @@ void fluid()
 			vel(p) += offset;
 				
 			auto cc=c*.5;
-			aaPoint(result, Vec2f(p) + vel(p), cc);
-			aaPoint(result, Vec2f(p) + vel(p)/2, cc);
+			aaPoint(result, vec2(p) + vel(p), cc);
+			aaPoint(result, vec2(p) + vel(p)/2, cc);
 		}
 	};
 	
 	boost::thread th1(func, 0, image.h / 2);
 	func(image.h / 2, image.h);
 	th1.join();
-	auto vel2=Array2D<Vec2f>(vel.w,vel.h, Vec2f::zero());
+	auto vel2=Array2D<vec2>(vel.w,vel.h, vec2::zero());
 	forxy(vel) {
-		aaPoint(vel2, Vec2f(p) + vel(p), vel(p));
+		aaPoint(vel2, vec2(p) + vel(p), vel(p));
 	}
 	vel = vel2;
 	image = result;
@@ -76,13 +76,13 @@ FFT::CArray makeKernel()
 		static FFT::Complex one = FFT::Complex(1.0 / (pi*radius*radius), 0.0);
 		static FFT::Complex zero = FFT::Complex(0.0, 0.0);
 		kernel(p) = 0;
-		auto func = [&](Vec2i distTo) {
+		auto func = [&](ivec2 distTo) {
 			kernel(p) += exp(-p.distanceSquared(distTo)*sigmaMul);
 		};
-		func(Vec2i(0, 0));
-		func(Vec2i(image.w, 0));
-		func(Vec2i(image.w, image.h));
-		func(Vec2i(0, image.h));
+		func(ivec2(0, 0));
+		func(ivec2(image.w, 0));
+		func(ivec2(image.w, image.h));
+		func(ivec2(0, image.h));
 	}
 	float sum = accumulate(kernel.begin(), kernel.end(), 0);
 	float normFactor = (1.0f / image.area) / sum; // image.area because fftw produces unnormalized data
@@ -124,17 +124,17 @@ void genFFTBloom()
 void thing1()
 {
 	GETFLOAT(hueattract, "min=0.0 max=1.0 step=0.01", 1);
-	Array2D<Vec2f> ab(image.w,image.h);
+	Array2D<vec2> ab(image.w,image.h);
 	forxy(image) {
 		ab(p) = (toHsv*image(p)).xy();
 	}
 	forxy(image) {
-		Vec2f offset = Vec2f::zero();
-		Vec2f abHere = ab(p);
+		vec2 offset = vec2::zero();
+		vec2 abHere = ab(p);
 		for(int x=-1;x<=1;x++){
 			for(int y=-1;y<=1;y++){
-				Vec2f abThere = ab.wr(p.x+x,p.y+y);
-				offset += Vec2f(x, y) / (1.0f - abThere.distance(abHere));
+				vec2 abThere = ab.wr(p.x+x,p.y+y);
+				offset += vec2(x, y) / (1.0f - abThere.distance(abHere));
 			}
 		}
 		::vel(p) += offset*hueattract*::fluidVelocity_*100.0;
@@ -147,7 +147,7 @@ void post()
 	GETFLOAT(saturationMul, "min=0.0 step=0.01", 0.56);
 	for(int i = 0; i < image.area; i++) {
 		auto c = image.data[i];
-		Vec3f hsv=rgbToHSV((Color&)c);
+		vec3 hsv=rgbToHSV((Color&)c);
 		float saturation = hsv.y;
 		c *= saturationFloor + saturationMul * pow(saturation,2.0f);
 		
@@ -159,12 +159,12 @@ void post()
 void correctExposure()
 {
 	float sum=0.0f;
-	Vec3f lumweights(.71f,.22f,.07f);
+	vec3 lumweights(.71f,.22f,.07f);
 	forxy(toDraw){
 		auto& c = toDraw(p);
 		if(isnan_(c.x) || isnan_(c.y) || isnan_(c.z))
 		{
-			c = Vec3f::zero();
+			c = vec3::zero();
 			continue;
 		}
 		//if(c.x<0||c.y<0||c.z<0)cout<<"NEG"<<endl;
@@ -197,10 +197,10 @@ void updateApp()
 	PFL(post) post();
 	correctExposure();
 	PFL(genFFTBloom) genFFTBloom();
-	PFL(trim) forxy(image) if(p.x < 10 || p.y < 10 || image.w-p.x < 10 || image.h - p.y < 10) image(p) = Vec3f::zero();
+	PFL(trim) forxy(image) if(p.x < 10 || p.y < 10 || image.w-p.x < 10 || image.h - p.y < 10) image(p) = vec3::zero();
 }
 
-class AudioGenerativeApp : public AppBasic {
+class AudioGenerativeApp : public AppBase {
  public:
 	void mouseDown(MouseEvent e) { input::mouseDown(e); }
 	void mouseUp(MouseEvent e) { input::mouseUp(e); }

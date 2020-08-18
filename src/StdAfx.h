@@ -8,7 +8,7 @@
 #include <fstream>
 #include <strstream>
 #include <string>
-#include <cinder/app/AppBasic.h>
+#include <cinder/app/AppBase.h>
 #include <cinder/gl/GlslProg.h>
 #include <cinder/gl/Texture.h>
 #include <cinder/ImageIo.h>

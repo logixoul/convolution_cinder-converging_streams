@@ -1,20 +1,20 @@
 #include "StdAfx.h"
 #include "misc.h"
 
-Vec3f& fetch(Array2D<Vec3f>& src, Vec2i const& pos)
+vec3& fetch(Array2D<vec3>& src, ivec2 const& pos)
 {
-    static Vec3f black(0.0, 0.0, 0.0);
+    static vec3 black(0.0, 0.0, 0.0);
     if(pos.x < 0 || pos.y < 0 || pos.x >= src.w || pos.y >= src.h) return black;
 	return src(pos);
 }
 
 
 
-Matrix33f toHsv;
-Matrix33f toHsvInv;
+mat3 toHsv;
+mat3 toHsvInv;
 int initHsv()
 {
-	toHsv = Matrix33f::createRotation(Vec3f(-1,1,0).normalized(), -acos(Vec3f(1,1,1).normalized().dot(Vec3f(0,0,1))));
+	toHsv = mat3::createRotation(vec3(-1,1,0).normalized(), -acos(vec3(1,1,1).normalized().dot(vec3(0,0,1))));
 	toHsvInv = toHsv.inverted();
 	return 0;
 }
@@ -22,7 +22,7 @@ int initHsv()
 static int ______ = initHsv();
 
 // from the matrix.rotate method with hardcoded axis (1, 1, 1)
-void rotateHue_ip( Vec3f& v, float angle )
+void rotateHue_ip( vec3& v, float angle )
 {
 	typedef float T;
 	T sina = math<T>::sin(angle);

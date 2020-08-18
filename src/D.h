@@ -3,5 +3,5 @@
 #include "util.h"
 #include "fftwrap.h"
 
-typedef Array2D<Vec3f> Image;
+typedef Array2D<vec3> Image;
 typedef FFT_T<float> FFT;

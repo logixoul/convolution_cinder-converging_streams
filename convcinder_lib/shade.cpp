@@ -117,12 +117,12 @@ gl::Texture shade(vector<gl::Texture> texv, const char* fshader_constChar, float
 	}
 	auto tex0 = texv[0];
 	shader.bind();
-	auto app=ci::app::AppBasic::get();
+	auto app=ci::app::AppBase::get();
 	float mouseX=app->getMousePos().x/float(app->getWindowWidth());
 	float mouseY=app->getMousePos().y/float(app->getWindowHeight());
-	shader.uniform("mouse", Vec2f(mouseX, mouseY));
+	shader.uniform("mouse", vec2(mouseX, mouseY));
 	shader.uniform("tex", 0); tex0.bind(0);
-	shader.uniform("texSize", Vec2f(tex0.getSize()));
+	shader.uniform("texSize", vec2(tex0.getSize()));
 	foreach(auto& p, globaldict)
 	{
 		shader.uniform(p.first, p.second);
@@ -132,7 +132,7 @@ gl::Texture shade(vector<gl::Texture> texv, const char* fshader_constChar, float
 		//shader.
 		//string index = texIndex(texv[i]);
 		shader.uniform(samplerName(i), i); texv[i].bind(i);
-		shader.uniform(samplerName(i) + "Size", Vec2f(texv[i].getSize()));
+		shader.uniform(samplerName(i) + "Size", vec2(texv[i].getSize()));
 	}
 	gl::Texture::Format fmt;
 	fmt.setInternalFormat(GL_RGBA32F);

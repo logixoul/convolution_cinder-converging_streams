@@ -22,9 +22,6 @@
     <ClCompile Include="gl.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="median.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="misc.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -64,9 +61,6 @@
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="gl.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="median.h">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="misc.h">

@@ -24,7 +24,6 @@
     <ClCompile Include="fastpow.cpp" />
     <ClCompile Include="getOpt.cpp" />
     <ClCompile Include="gl.cpp" />
-    <ClCompile Include="median.cpp" />
     <ClCompile Include="misc.cpp" />
     <ClCompile Include="picopng.cpp" />
     <ClCompile Include="profiling.cpp" />
@@ -43,7 +42,6 @@
     <ClInclude Include="fftwrap.h" />
     <ClInclude Include="getOpt.h" />
     <ClInclude Include="gl.h" />
-    <ClInclude Include="median.h" />
     <ClInclude Include="misc.h" />
     <ClInclude Include="picopng.h" />
     <ClInclude Include="profiling.h" />
